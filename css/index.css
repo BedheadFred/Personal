@@ -141,6 +141,16 @@ div.profile-category-group {
     }
 }
 
+.pp-section {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    text-align: left;
+    overflow-x: hidden;
+    background: white;
+    box-shadow: 0 1px 10px #00000040;
+}
+
 #stageContentHeading {
     font-size: 5.3rem;
     text-transform: uppercase;
