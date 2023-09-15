@@ -61,13 +61,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function createProjectListeners() {
     const openModalAndDisableScrolling = (e) => {
       e.modal.showModal();
+      e.modal.scrollTop = 0;
       e.modal.classList.add("opened");
-      $.fn.pagepiling.setAllowScrolling(false);
     };
     const closeModalAndEnableScrolling = (e) => {
       e.modal.classList.remove('opened');
       setTimeout(() => e.modal.close(), 250);
-      $.fn.pagepiling.setAllowScrolling(true);
     };
 
     Object.keys(projects).forEach((key) => {
@@ -99,6 +98,8 @@ document.addEventListener('DOMContentLoaded', function () {
   initializePagepiling();
   createPageListeners();
   createProjectListeners();
+
+  // force user to use buttons to navigate between pages
   $.fn.pagepiling.setAllowScrolling(false);
 });
 
