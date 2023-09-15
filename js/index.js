@@ -61,19 +61,20 @@ document.addEventListener('DOMContentLoaded', function () {
   function createProjectListeners() {
     const openModalAndDisableScrolling = (e) => {
       e.modal.showModal();
+      e.modal.scrollTop = 0;
       e.modal.classList.add("opened");
-      $.fn.pagepiling.setAllowScrolling(false);
     };
     const closeModalAndEnableScrolling = (e) => {
       e.modal.classList.remove('opened');
       setTimeout(() => e.modal.close(), 250);
-      $.fn.pagepiling.setAllowScrolling(true);
     };
 
     Object.keys(projects).forEach((key) => {
       if (projects[key].modal && projects[key].openTrigger && projects[key].closeTrigger) {
         projects[key].openTrigger.addEventListener('click', () => {
           openModalAndDisableScrolling(projects[key]);
+
+          projects[key].modal.getElementsByClassName('container')[0].classList.add('in-view');
         });
         projects[key].closeTrigger.addEventListener('click', () => {
           closeModalAndEnableScrolling(projects[key]);
@@ -97,6 +98,8 @@ document.addEventListener('DOMContentLoaded', function () {
   initializePagepiling();
   createPageListeners();
   createProjectListeners();
+
+  // force user to use buttons to navigate between pages
   $.fn.pagepiling.setAllowScrolling(false);
 });
 
