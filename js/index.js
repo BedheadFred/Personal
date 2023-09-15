@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     curtain.style.display = 'none';
     stageHeading.classList.add("in-view");
     stageSubheading.classList.add("in-view");
-  };
+  }
 
   function initializePagepiling() {
     // Note to self: pagepiling is a custom plugin on the jquery prototype object, therefore getElementById wouldn't work (gotta stick to jquery)
