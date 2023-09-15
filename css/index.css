@@ -141,16 +141,6 @@ div.profile-category-group {
     }
 }
 
-.pp-section {
-    height: 100%;
-    position: absolute;
-    width: 100%;
-    text-align: left;
-    overflow-x: hidden;
-    background: white;
-    box-shadow: 0px 1px 10px #00000040;
-}
-
 #stageContentHeading {
     font-size: 5.3rem;
     text-transform: uppercase;
@@ -232,7 +222,6 @@ div.profile-category-group {
 
 #stageContentSubheading {
     font-size: 1.1em;
-    letter-spacing: 0;
     color: #646464;
     position: relative;
     margin-left: -9px;
@@ -375,7 +364,7 @@ div.profile-category-group {
 }
 
 .work__header {
-    border-left: 0px solid #e3ce9d;
+    border-left: 0 solid #e3ce9d;
     padding-left: 0;
     margin-bottom: 0.25rem;
     transition: all 0.5s;
@@ -423,7 +412,7 @@ div.profile-category-group {
 
     background-color: white;
     border: none;
-    box-shadow: 2px 2px 3px 0px rgba(47, 47, 47, 0.15), -1px -1px 4px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 2px 2px 3px 0 rgba(47, 47, 47, 0.15), -1px -1px 4px 0 rgba(0, 0, 0, 0.05);
     width: 95vw;
     height: auto;
 
@@ -462,7 +451,7 @@ div.profile-category-group {
     background: white;
     border-radius: 3px;
     border: 1px solid rgb(60 60 60);
-    box-shadow: 2px 2px 3px 0px rgba(47, 47, 47, 0.15), -1px -1px 4px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 2px 2px 3px 0 rgba(47, 47, 47, 0.15), -1px -1px 4px 0 rgba(0, 0, 0, 0.05);
 
     /* ensure its always on top */
     z-index: 1;
@@ -477,6 +466,19 @@ div.profile-category-group {
 
 .project-modal .container {
     padding: 5rem 0;
+
+    position: relative;
+    top: -2rem;
+    opacity: 0;
+
+    transition:
+            top 0.5s,
+            opacity 1s;
+}
+
+.project-modal .container.in-view {
+    top: 0;
+    opacity: 1;
 }
 
 .project-modal h2 {

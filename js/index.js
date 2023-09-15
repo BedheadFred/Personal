@@ -74,6 +74,8 @@ document.addEventListener('DOMContentLoaded', function () {
       if (projects[key].modal && projects[key].openTrigger && projects[key].closeTrigger) {
         projects[key].openTrigger.addEventListener('click', () => {
           openModalAndDisableScrolling(projects[key]);
+
+          projects[key].modal.getElementsByClassName('container')[0].classList.add('in-view');
         });
         projects[key].closeTrigger.addEventListener('click', () => {
           closeModalAndEnableScrolling(projects[key]);
