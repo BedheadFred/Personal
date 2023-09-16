@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const curtain = document.getElementById('curtain');
   const stageHeading = document.getElementById('stageContentHeading');
   const stageSubheading = document.getElementById('stageContentSubheading');
+  const profilePage = document.getElementById('main');
   const projectsButton = document.getElementById('projects-button');
   const goBackButton = document.getElementById('go-back-button');
   const projects = {
@@ -54,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     goBackButton.addEventListener('click', function () {
+      profilePage.scrollTop = 0;
       $.fn.pagepiling.moveSectionUp();
     });
   }
