@@ -292,6 +292,14 @@ div.profile-category-group {
     align-items: center;
 }
 
+#reverse-shatter {
+    padding-top: 0.5rem;
+}
+
+#linkedin-logo {
+    display: flex;
+}
+
 #linkedin-logo:hover {
     fill: #0a66c2;
 }
@@ -390,7 +398,7 @@ div.profile-category-group {
     transition: border 0.5s, padding 0.5s;
 }
 
-.work__block span {
+.work__block p {
     position: relative;
     left: 0;
     padding-left: 0;
@@ -407,9 +415,13 @@ div.profile-category-group {
     padding-left: 20px;
 }
 
+.work__block:focus-visible {
+    outline: 0;
+}
+
 /* using a left movement on desktop screens and above to avoid sentence wrapping */
 @media (min-width: 641px) {
-    .work__block:hover span, .work__block:focus span {
+    .work__block:hover p, .work__block:focus p {
         left: 40px;
     }
 }
@@ -419,7 +431,7 @@ div.profile-category-group {
         width: 90%;
     }
     /* when there's less horizontal screen space, use padding-left to allow sentence wrapping */
-    .work__block:hover span, .work__block:focus span {
+    .work__block:hover p, .work__block:focus p {
         padding-left: 40px;
     }
 }
@@ -475,7 +487,13 @@ div.profile-category-group {
     border: none;
     box-shadow: 2px 2px 4px 0 rgb(50 50 50 / 40%), -1px -1px 1px 0 rgb(0 0 0 / 10%);
 
-    /* ensure its always on top */
+    /* make sure the X is centered */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    /* ensure the button is always on top */
     z-index: 1;
 
     transition: all .15s ease-out;
