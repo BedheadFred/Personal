@@ -457,11 +457,12 @@ div.profile-category-group {
     right: 0;
     top: 0;
 
-    padding: 0.25rem 0.5em;
+    height: 2rem;
+    width: 2rem;
     background: white;
-    border-radius: 3px;
-    border: 1px solid rgb(60 60 60);
-    box-shadow: 2px 2px 3px 0 rgba(47, 47, 47, 0.15), -1px -1px 4px 0 rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    border: none;
+    box-shadow: 2px 2px 4px 0 rgb(50 50 50 / 40%), -1px -1px 1px 0 rgb(0 0 0 / 10%);
 
     /* ensure its always on top */
     z-index: 1;
