@@ -26,11 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function initializeTiles(colCount) {
         const pieceWidth = window.innerWidth / colCount;
         const pieceHeight = pieceWidth;
-        const pieces = (window.innerWidth > window.innerHeight) ?
-            100 :
-            Math.pow(window.innerHeight / pieceHeight, 2);
+        const rowCount = (window.innerHeight / pieceWidth) + 1;
+        const numTiles = colCount * rowCount;
 
-        for (let i = pieces - 1; i >= 0; i--) {
+        for (let i = numTiles - 1; i >= 0; i--) {
             const piece = document.createElement('div');
             piece.className = 'piece';
             piece.style.width = pieceWidth + 'px';
@@ -41,14 +40,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function shatter() {
         // scale and fade out the text
-        TweenLite.to(document.querySelector("#stage > .content"), shatterSpeed / 10, {
+        gsap.to(document.querySelector("#stage > .content"), shatterSpeed / 10, {
             scale: 0,
             opacity: 0
         });
 
         // shatter pieces
         document.querySelectorAll('.piece').forEach(function(piece) {
-            TweenLite.to(piece, shatterSpeed, {
+            gsap.to(piece, shatterSpeed, {
                 ...getRandomPositioning(),
                 scale: 0,
                 opacity: 0,
@@ -76,13 +75,13 @@ document.addEventListener('DOMContentLoaded', function() {
         initializeTiles(columns);
         document.querySelectorAll('.piece').forEach(function(piece) {
             // hide pieces and put them in random positioning
-            TweenLite.set(piece, {
+            gsap.set(piece, {
                 ...getRandomPositioning(),
                 scale: 0,
                 opacity: 0
             });
             // show pieces and animate them into the unbroken positions
-            TweenLite.to(piece, shatterSpeed, {
+            gsap.to(piece, shatterSpeed, {
                 x: 0,
                 y: 0,
                 z: 0,
@@ -117,11 +116,11 @@ document.addEventListener('DOMContentLoaded', function() {
         function reverseShatterHandler() {
             if (isMosaicBroken) {
                 // Set text to normal size (don't want it to scale up from 0)
-                TweenLite.set(document.querySelector("#stage > .content"), { scale: 1 });
+                gsap.set(document.querySelector("#stage > .content"), { scale: 1 });
                 reverseShatter();
 
                 setTimeout(() => {
-                    TweenLite.to(document.querySelector("#stage > .content"), shatterSpeed / 2, { opacity: 1 });
+                    gsap.to(document.querySelector("#stage > .content"), shatterSpeed / 2, { opacity: 1 });
                     isMosaicBroken = false;
                 }, shatterSpeed * 1000);
             }
