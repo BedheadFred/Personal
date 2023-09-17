@@ -372,12 +372,11 @@ div.profile-category-group {
 /*PROJECTS SECTION STYLING*/
 
 #projects {
-    max-width: 35rem;
-    padding: 3rem 0;
-    margin: 2rem auto auto;
+    max-width: 32rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
     position: relative;
     top: 5%;
-    transition: all 0.5s;
 }
 
 #projects > h2 {
@@ -425,9 +424,6 @@ div.profile-category-group {
 }
 
 @media (max-width: 640px) {
-    #projects {
-        width: 90%;
-    }
     /* when there's less horizontal screen space, use padding-left to allow sentence wrapping */
     .work__block:hover p, .work__block:focus p {
         padding-left: 2.5rem;
