@@ -487,7 +487,13 @@ div.profile-category-group {
     border: none;
     box-shadow: 2px 2px 4px 0 rgb(50 50 50 / 40%), -1px -1px 1px 0 rgb(0 0 0 / 10%);
 
-    /* ensure its always on top */
+    /* make sure the X is centered */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    /* ensure the button is always on top */
     z-index: 1;
 
     transition: all .15s ease-out;
