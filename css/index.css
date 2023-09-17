@@ -27,7 +27,7 @@ body {
     overflow: hidden;
 }
 
-p {
+p, span {
     font-size: 1rem;
     line-height: 1.618;
     margin: 0;
@@ -106,7 +106,12 @@ ul.inline-list li:not(:last-child)::after {
 }
 
 .button {
-    all: unset;
+    /* reset all button styles except focus rings */
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+
     display: inline;
     font-size: 1rem;
 }
@@ -371,36 +376,36 @@ div.profile-category-group {
 
 .work__block {
     margin-bottom: 2.5rem;
-    transition: all 0.5s;
-    z-index: -1000;
 }
 
 .work__header {
     border-left: 0 solid #e3ce9d;
     padding-left: 0;
     margin-bottom: 0.25rem;
-    transition: all 0.5s;
+
+    transition: border 0.5s, padding 0.5s;
 }
 
-.work__block p {
+.work__block span {
     position: relative;
     left: 0;
     padding-left: 0;
-    transition: all 0.5s;
+
+    transition: border 0.5s, padding 0.5s, left 0.5s;
 }
 
 .work__block:hover {
     cursor: pointer;
 }
 
-.work__block:hover .work__header {
+.work__block:hover .work__header, .work__block:focus .work__header {
     border-left: 20px solid #e3ce9d;
     padding-left: 20px;
 }
 
 /* using a left movement on desktop screens and above to avoid sentence wrapping */
 @media (min-width: 641px) {
-    .work__block:hover p {
+    .work__block:hover span, .work__block:focus span {
         left: 40px;
     }
 }
@@ -410,7 +415,7 @@ div.profile-category-group {
         width: 90%;
     }
     /* when there's less horizontal screen space, use padding-left to allow sentence wrapping */
-    .work__block:hover p {
+    .work__block:hover span, .work__block:focus span {
         padding-left: 40px;
     }
 }

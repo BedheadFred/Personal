@@ -61,12 +61,12 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function createProjectListeners() {
-    const openModalAndDisableScrolling = (e) => {
+    const openModal = (e) => {
       e.modal.showModal();
       e.modal.scrollTop = 0;
       e.modal.classList.add("opened");
     };
-    const closeModalAndEnableScrolling = (e) => {
+    const closeModal = (e) => {
       e.modal.classList.remove('opened');
       setTimeout(() => e.modal.close(), 250);
     };
@@ -74,16 +74,21 @@ document.addEventListener('DOMContentLoaded', function () {
     Object.keys(projects).forEach((key) => {
       if (projects[key].modal && projects[key].openTrigger && projects[key].closeTrigger) {
         projects[key].openTrigger.addEventListener('click', () => {
-          openModalAndDisableScrolling(projects[key]);
-
+          openModal(projects[key]);
           projects[key].modal.getElementsByClassName('container')[0].classList.add('in-view');
         });
+        projects[key].openTrigger.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter') {
+            openModal(projects[key]);
+            projects[key].modal.getElementsByClassName('container')[0].classList.add('in-view');
+          }
+        });
         projects[key].closeTrigger.addEventListener('click', () => {
-          closeModalAndEnableScrolling(projects[key]);
+          closeModal(projects[key]);
         });
         projects[key].modal.addEventListener('keydown', function (event) {
           if (event.key === 'Escape') {
-            closeModalAndEnableScrolling(projects[key]);
+            closeModal(projects[key]);
           }
         });
       }
