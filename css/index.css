@@ -339,6 +339,10 @@ div.profile-category-group {
     text-decoration: underline;
 }
 
+#projects-button > * {
+    display: block;
+}
+
 .qualifier {
     color: #989898;
     font-size: 1rem;
