@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // elements
   const stageHeading = document.getElementById('stageContentHeading');
   const stageSubheading = document.getElementById('stageContentSubheading');
+  const stageContent = [stageHeading, stageSubheading];
   const profilePage = document.getElementById('main');
   const projectsButton = document.getElementById('projects-button');
   const goBackButton = document.getElementById('go-back-button');
@@ -70,9 +71,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function shatter() {
     // scale and fade out the text
-    gsap.to(document.querySelector("#stage > .content"), shatterSpeed / 10, {
-      scale: 0,
-      opacity: 0
+    stageContent.forEach( (e) => {
+      gsap.to(e, shatterSpeed / 10, {
+        scale: 0,
+        opacity: 0
+      })
     });
 
     // shatter pieces
@@ -99,8 +102,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function reverseShatter() {
-    // ensure parent wrapper is fully visible
-    stage.style.display = 'block';
     // create the pieces of the mosaic
     initializeTiles(columns);
     document.querySelectorAll('.piece').forEach(function(piece) {
@@ -145,14 +146,26 @@ document.addEventListener('DOMContentLoaded', function () {
   function addReverseShatterListener() {
     function reverseShatterHandler() {
       if (isMosaicBroken) {
+        // ensure parent wrapper is fully visible
+        stage.style.display = 'block';
+
         // Set text to normal size (don't want it to scale up from 0)
-        gsap.set(document.querySelector("#stage > .content"), { scale: 1 });
+        stageContent.forEach( (e) => {
+          gsap.set(e, {
+            scale: 1,
+          })
+        });
+
         reverseShatter();
 
         setTimeout(() => {
-          gsap.to(document.querySelector("#stage > .content"), shatterSpeed / 2, { opacity: 1 });
+          stageContent.forEach( (e) => {
+            gsap.to(e, shatterSpeed / 2, {
+              opacity: 1,
+            })
+          });
           isMosaicBroken = false;
-        }, shatterSpeed * 1000);
+        }, 300);
       }
     }
 
@@ -188,8 +201,10 @@ document.addEventListener('DOMContentLoaded', function () {
     curtain.style.display = 'none';
     setTimeout(() => {
       stageHeading.classList.add("in-view");
+    }, 250);
+    setTimeout(() => {
       stageSubheading.classList.add("in-view");
-    }, 150);
+    }, 800);
   }
 
   function initializePagepiling() {
