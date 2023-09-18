@@ -150,85 +150,27 @@ div.profile-category-group {
 
 .pp-section {
     height: 100%;
-    position: absolute;
     width: 100%;
-    text-align: left;
-    overflow-x: hidden;
     background: white;
     box-shadow: 0 0 10px #00000030;
+
+    position: absolute;
+    text-align: left;
+
+    overflow-x: hidden;
 }
-
-#stageContentHeading {
-    font-size: 5.3rem;
-    text-transform: uppercase;
-    font-family: 'Julius Sans One', sans-serif;
-    color: #707070;
-    margin-bottom: 0;
-    position: relative;
-
-    /* for animation */
-    top: -1rem;
-    opacity: 0;
-    transition: opacity 2s, top 0.75s ease-out;
-}
-
-#stageContentHeading.in-view {
-    top: 0;
-    opacity: 1;
-}
-
-#stageContentSubheading {
-    font-size: 1.1em;
-    color: #646464;
-    position: relative;
-    margin-top: 0;
-
-    font-weight: 400;
-    letter-spacing: 2.2px;
-
-    /* for animation */
-    top: -1rem;
-    opacity: 0;
-    transition: opacity 1.5s, top 0.75s ease-out;
-}
-
-#stageContentSubheading.in-view {
-    top: 0;
-    opacity: 1;
-}
-
-#stage > .content {
-    position: relative;
-    top: 32vh;
-    text-align: center;
-    color: black;
-    z-index: 5;
-    pointer-events: none;
-}
-
-    @media (max-width: 400px) {
-        #stage > .content {
-            top: 15vh;
-        }
-    }
-
-    @media (max-width: 430px) {
-        #stage > .content {
-            padding: 0 3.75rem;
-        }
-    }
 
 #stage {
-    opacity: 1;
-    transition: opacity 0.5s ease-in;
     position: absolute;
     height: 100vh;
     width: 100vw;
     z-index: 998;
+
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
 }
 
-/*curtain shattering*/
-#stage > .mosaic {
+.mosaic {
     position: absolute;
     top: 0;
     left: 0;
@@ -237,8 +179,8 @@ div.profile-category-group {
 
     -webkit-perspective: 800px;
     -webkit-perspective-origin: 50% 50px;
-   perspective: 800px;
-   perspective-origin: 50% 50px;    
+    perspective: 800px;
+    perspective-origin: 50% 50px;
 }
 
 .piece {
@@ -246,7 +188,64 @@ div.profile-category-group {
     float: left;
     cursor: pointer;
 }
-/*CURTAIN END*/
+
+.content {
+    position: relative;
+    top: 32vh;
+    text-align: center;
+    color: black;
+    z-index: 5;
+    pointer-events: none;
+}
+
+#stageContentHeading {
+    font-size: 5.3rem;
+    color: #707070;
+    text-transform: uppercase;
+    font-family: 'Julius Sans One', sans-serif;
+
+    position: relative;
+    margin-bottom: 0;
+
+    /* for animation */
+    opacity: 0;
+    top: -1rem;
+
+    transition: opacity 2s, top 0.75s ease-out;
+}
+
+#stageContentSubheading {
+    font-size: 1.1em;
+    color: #646464;
+    font-weight: 400;
+    letter-spacing: 2.2px;
+
+    position: relative;
+    margin-top: 0;
+
+    /* for animation */
+    opacity: 0;
+    top: -1rem;
+
+    transition: opacity 1.5s, top 0.75s ease-out;
+}
+
+#stageContentHeading.in-view, #stageContentSubheading.in-view {
+    opacity: 1;
+    top: 0;
+}
+
+@media (max-width: 400px) {
+    .content {
+        top: 15vh;
+    }
+}
+
+@media (max-width: 430px) {
+    .content {
+        padding: 0 3.75rem;
+    }
+}
 
 /*ABOUT*/
 #main {
