@@ -162,11 +162,39 @@ div.profile-category-group {
     font-size: 5.3rem;
     text-transform: uppercase;
     font-family: 'Julius Sans One', sans-serif;
+    color: #707070;
+    margin-bottom: 0;
+    position: relative;
+
+    /* for animation */
+    top: -1rem;
+    opacity: 0;
+    transition: opacity 2s, top 0.75s ease-out;
+}
+
+#stageContentHeading.in-view {
+    top: 0;
+    opacity: 1;
 }
 
 #stageContentSubheading {
     font-size: 1.1em;
-    letter-spacing: 0;
+    color: #646464;
+    position: relative;
+    margin-top: 0;
+
+    font-weight: 400;
+    letter-spacing: 2.2px;
+
+    /* for animation */
+    top: -1rem;
+    opacity: 0;
+    transition: opacity 1.5s, top 0.75s ease-out;
+}
+
+#stageContentSubheading.in-view {
+    top: 0;
+    opacity: 1;
 }
 
 #stage > .content {
@@ -217,45 +245,6 @@ div.profile-category-group {
     background: rgb(6, 6, 6);
     float: left;
     cursor: pointer;
-}
-
-#stageContentHeading {
-    font-size: 5.3rem;
-    text-transform: uppercase;
-    font-family: 'Julius Sans One', sans-serif;
-    color: #707070;
-    margin-bottom: 0;
-    position: relative;
-    top: -1rem;
-    opacity: 0;
-    transition: opacity 2s, top 0.75s ease-out;
-}
-
-#stageContentHeading.in-view {
-    top: 0;
-    opacity: 1;
-}
-
-#stageContentSubheading {
-    font-size: 1.1em;
-    color: #646464;
-    position: relative;
-    margin-top: 0;
-
-    font-weight: 400;
-    letter-spacing: 2.2px;
-
-    /* for animation */
-    top: -1rem;
-    opacity: 0;
-    transition: opacity 1s, top 0.75s ease-out;
-}
-
-#stageContentSubheading.in-view {
-    -webkit-transition-delay: .5s; /* Safari */
-    transition-delay: .5s;
-    top: 0;
-    opacity: 1;
 }
 /*CURTAIN END*/
 
