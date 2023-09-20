@@ -197,8 +197,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function initializeStageContent() {
-    // ensure curtain is hidden — only necessary during resizing to prevent visual artifacts.
+    // failsafe: ensure curtain is hidden — only necessary during resizing to prevent visual artifacts.
     curtain.style.display = 'none';
+
     setTimeout(() => {
       stageHeading.classList.add("in-view");
     }, 250);

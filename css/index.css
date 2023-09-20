@@ -82,7 +82,6 @@ ul.inline-list li:not(:last-child)::after {
     height: 100vh;
     width: 100vw;
     background: rgb(6, 6, 6);
-    opacity: 1;
     position: absolute;
     top: 0;
 }
@@ -207,9 +206,6 @@ div.profile-category-group {
     position: relative;
     margin-bottom: 0;
 
-    /* bugfix: the heading sporadically is unhidden on first load */
-    visibility: hidden;
-
     /* for animation */
     opacity: 0;
     top: -1rem;
@@ -226,8 +222,6 @@ div.profile-category-group {
     position: relative;
     margin-top: 0;
 
-    visibility: hidden;
-
     /* for animation */
     opacity: 0;
     top: -1rem;
@@ -236,7 +230,6 @@ div.profile-category-group {
 }
 
 #stageContentHeading.in-view, #stageContentSubheading.in-view {
-    visibility: visible;
     opacity: 1;
     top: 0;
 }
@@ -500,8 +493,8 @@ div.profile-category-group {
     opacity: 0;
 
     transition:
-            top 0.5s,
-            opacity 1s;
+    top 0.5s,
+    opacity 1s;
 }
 
 .project-modal .container.in-view {
