@@ -45,7 +45,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const figures = document.querySelectorAll('figure');
 
   // state
-  let isMosaicBroken = false;
+  // initialize as true so it can't be broken before the content shows up
+  let isMosaicBroken = true;
 
   // functions
   function removeTiles() {
@@ -70,41 +71,44 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function shatter() {
-    // scale and fade out the text
-    stageContent.forEach( (e) => {
-      gsap.to(e, shatterSpeed / 10, {
-        scale: 0,
-        opacity: 0
-      })
-    });
-
-    // shatter pieces
-    document.querySelectorAll('.piece').forEach(function(piece) {
-      gsap.to(piece, shatterSpeed, {
-        ...getRandomPositioning(),
-        scale: 0,
-        opacity: 0,
+    if (!isMosaicBroken) {
+      isMosaicBroken = true;
+      // scale and fade out the text
+      stageContent.forEach((e) => {
+        gsap.to(e, shatterSpeed / 10, {
+          scale: 0,
+          opacity: 0
+        })
       });
-    });
 
-    // remove stage
-    setTimeout(function() {
-      removeTiles();
-      stage.style.display = 'none';
-    }, shatterSpeed * 800);
+      // shatter pieces
+      document.querySelectorAll('.piece').forEach(function (piece) {
+        gsap.to(piece, shatterSpeed, {
+          ...getRandomPositioning(),
+          scale: 0,
+          opacity: 0,
+        });
+      });
 
-    // bring profile content into view
-    setTimeout(function() {
-      profilePageElements.forEach((e) => {
-        e.classList.add('in-view');
-      })
-    }, 250);
+      // remove stage
+      setTimeout(function () {
+        removeTiles();
+        stage.style.display = 'none';
+      }, shatterSpeed * 800);
+
+      // bring profile content into view
+      setTimeout(function () {
+        profilePageElements.forEach((e) => {
+          e.classList.add('in-view');
+        })
+      }, 250);
+    }
   }
 
   function reverseShatter() {
     // create the pieces of the mosaic
     initializeTiles(columns);
-    document.querySelectorAll('.piece').forEach(function(piece) {
+    document.querySelectorAll('.piece').forEach(function (piece) {
       // hide pieces and put them in random positioning
       gsap.set(piece, {
         ...getRandomPositioning(),
@@ -123,22 +127,19 @@ document.addEventListener('DOMContentLoaded', function () {
         opacity: 1
       });
     });
+
+    setTimeout(() => {
+      isMosaicBroken = false;
+    }, 1500);
   }
 
   function addShatterListener() {
-    function shatterHandler() {
-      if (!isMosaicBroken) {
-        isMosaicBroken = true;
-        shatter();
-      }
-    }
-
     const events = ["click", "touchmove", "touchend", "wheel", "DOMMouseScroll", "contextmenu"];
 
     events.forEach(eventType => {
       stage.addEventListener(eventType, (event) => {
         event.preventDefault(); // don't open the context menu if right-clicked
-        shatterHandler();
+        shatter();
       });
     });
   }
@@ -164,7 +165,6 @@ document.addEventListener('DOMContentLoaded', function () {
               opacity: 1,
             })
           });
-          isMosaicBroken = false;
         }, 300);
       }
     }
@@ -206,6 +206,9 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(() => {
       stageSubheading.classList.add("in-view");
     }, 800);
+    setTimeout(() => {
+      isMosaicBroken = false;
+    }, 1500);
   }
 
   function initializePagepiling() {
