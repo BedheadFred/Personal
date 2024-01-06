@@ -18,7 +18,7 @@ html {
     font-size: 16px;
 }
 
-h1,h2,h3,p,span,li {
+h1,h2,h3,h4,p,span,li {
     font-family: 'Poppins', sans-serif;
 }
 
@@ -55,7 +55,9 @@ h3 {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.6875rem;
-    color: #5B5B5B;
+    font-weight: 400;
+    line-height: 1.618;
+    color: #5B5B5B !important;
     margin: 0;
 }
 
